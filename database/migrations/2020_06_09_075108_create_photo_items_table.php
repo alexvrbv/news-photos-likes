@@ -16,6 +16,7 @@ class CreatePhotoItemsTable extends Migration
         Schema::create('photo_items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image');
             $table->string('user_id');
             $table->timestamps();
         });

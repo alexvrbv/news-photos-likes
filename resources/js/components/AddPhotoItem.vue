@@ -8,6 +8,10 @@
                         <label>Name</label>
                         <input type="text" class="form-control" v-model="photoItem.name">
                     </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input type="file" name="image" class="form-control-file" @change="selectFile">
+                    </div>
                     <button type="submit" class="btn btn-primary">Add Photo</button>
                 </form>
             </div>
@@ -33,7 +37,15 @@
                     ))
                     .catch(error => console.log(error))
                     .finally(() => this.loading = false)
-            }
+            },
+            selectFile(e) {      
+                var fileReader = new FileReader()
+                
+                fileReader.readAsDataURL(e.target.files[0])
+                fileReader.onload = (e) => {
+                    this.photoItem.image = e.target.result
+                }
+            },
         }
     }
 </script>

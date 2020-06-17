@@ -7,6 +7,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>Created by user (id)</th>
                 <th>Created At</th>
                 <th>Updated At</th>
@@ -17,6 +18,7 @@
             <tr v-for="photoItem in photoItems" :key="photoItem.id">
                 <td>{{ photoItem.id }}</td>
                 <td>{{ photoItem.name }}</td>
+                <td><img class="img-thumbnail" :src="'/storage/' + photoItem.image"></td>
                 <td>{{ photoItem.user_id }}</td>
                 <td>{{ photoItem.created_at }}</td>
                 <td>{{ photoItem.updated_at }}</td>

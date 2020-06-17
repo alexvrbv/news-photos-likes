@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\PhotoItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use JWTAuth;
+use File;
+use Debugbar;
 
 class PhotoItemController extends Controller
 {
@@ -38,9 +41,26 @@ class PhotoItemController extends Controller
     public function store(Request $request)
     {
         $user = JWTAuth::parseToken()->authenticate();
+
+        $image = '';
+        if ($request->image) {
+            $exploded = explode(',', $request->image);
+            $decoded = base64_decode($exploded[1]);
+            if (str_contains($exploded[0], 'jpeg')) {
+                $extension = 'jpg';
+            } else {
+                $extension = 'png'; 
+            }
+            $fileName = Str::random().'.'.$extension;
+            $path = public_path().'/storage/'.$fileName;
+            file_put_contents($path, $decoded);            
+            $image .= $fileName;
+        }
+
         $photoItem = new PhotoItem([
             'name' => $request->input('name'),
             'user_id' => $user->id,
+            'image' => $image,
         ]);
         $photoItem->save();
 
@@ -80,7 +100,25 @@ class PhotoItemController extends Controller
     public function update($id, Request $request)
     {
         $photoItem = PhotoItem::find($id);
-        $photoItem->update($request->all());
+        $image = $photoItem->image;
+        if ($request->image && ($request->image != $image)) {
+            $image = "";
+            Debugbar::info($request->image);
+            $exploded = explode(',', $request->image);
+            $decoded = base64_decode($exploded[1]);
+            if (str_contains($exploded[0], 'jpeg')) {
+                $extension = 'jpg';
+            } else {
+                $extension = 'png'; 
+            }
+            $fileName = Str::random().'.'.$extension;
+            $path = public_path().'/storage/'.$fileName;
+            file_put_contents($path, $decoded);            
+            $image .= $fileName;
+        }
+        $photoItem->update($request->except('image') + [
+            'image' => $image
+        ]);
         return response()->json('The photo item successfully updated');
     }
 

@@ -8,6 +8,7 @@ class PhotoItem extends Model
 {
     protected $fillable =[
         'name',
+        'image',
         'user_id',
     ];
 }

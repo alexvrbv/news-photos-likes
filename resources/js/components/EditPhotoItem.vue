@@ -8,6 +8,10 @@
                         <label>Name</label>
                         <input type="text" class="form-control" v-model="photoItem.name">
                     </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input type="file" name="image" class="form-control-file" @change="selectFile">
+                    </div>                    
                     <button type="submit" class="btn btn-primary">Update Photo</button>
                 </form>
             </div>
@@ -37,7 +41,15 @@
                     .then((response) => {
                         this.$router.push({name: 'home'});
                     });
-            }
+            },
+            selectFile(e) {      
+                var fileReader = new FileReader()
+                
+                fileReader.readAsDataURL(e.target.files[0])
+                fileReader.onload = (e) => {
+                    this.photoItem.image = e.target.result
+                }
+            },            
         }
     }
 </script>

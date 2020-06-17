@@ -3183,6 +3183,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3203,6 +3207,16 @@ __webpack_require__.r(__webpack_exports__);
       })["finally"](function () {
         return _this.loading = false;
       });
+    },
+    selectFile: function selectFile(e) {
+      var _this2 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this2.photoItem.image = e.target.result;
+      };
     }
   }
 });
@@ -3218,6 +3232,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3414,6 +3430,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3436,6 +3456,16 @@ __webpack_require__.r(__webpack_exports__);
           name: 'home'
         });
       });
+    },
+    selectFile: function selectFile(e) {
+      var _this3 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this3.photoItem.image = e.target.result;
+      };
     }
   }
 });
@@ -39382,6 +39412,16 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Image")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control-file",
+                attrs: { type: "file", name: "image" },
+                on: { change: _vm.selectFile }
+              })
+            ]),
+            _vm._v(" "),
             _c(
               "button",
               { staticClass: "btn btn-primary", attrs: { type: "submit" } },
@@ -39426,6 +39466,8 @@ var render = function() {
           _vm._v(" "),
           _c("th", [_vm._v("Name")]),
           _vm._v(" "),
+          _c("th", [_vm._v("Image")]),
+          _vm._v(" "),
           _c("th", [_vm._v("Created by user (id)")]),
           _vm._v(" "),
           _c("th", [_vm._v("Created At")]),
@@ -39443,6 +39485,13 @@ var render = function() {
             _c("td", [_vm._v(_vm._s(photoItem.id))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(photoItem.name))]),
+            _vm._v(" "),
+            _c("td", [
+              _c("img", {
+                staticClass: "img-thumbnail",
+                attrs: { src: "/storage/" + photoItem.image }
+              })
+            ]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(photoItem.user_id))]),
             _vm._v(" "),
@@ -39725,6 +39774,16 @@ var render = function() {
                     _vm.$set(_vm.photoItem, "name", $event.target.value)
                   }
                 }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Image")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control-file",
+                attrs: { type: "file", name: "image" },
+                on: { change: _vm.selectFile }
               })
             ]),
             _vm._v(" "),
