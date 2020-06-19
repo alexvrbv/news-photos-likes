@@ -34,6 +34,13 @@ Route::group(['prefix' => 'newsItem'], function () {
     Route::delete('destroy/{id}', 'NewsItemController@destroy');
 });
 
+Route::get('likes', 'LikeController@index');
+Route::group(['prefix' => 'like'], function () {
+    Route::post('store', 'LikeController@store');
+    Route::get('get-one/{item_id}/{item_type}', 'LikeController@getOne');
+    Route::delete('destroy/{id}', 'LikeController@destroy');
+});
+
 Route::post('auth/register', 'AuthController@register');
 Route::post('auth/login', 'AuthController@login');
 Route::group(['middleware' => 'jwt.auth'], function(){

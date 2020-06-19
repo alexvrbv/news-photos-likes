@@ -27,8 +27,11 @@
                         <router-link v-if="photoItem.user_id == $auth.user().id" :to="{name: 'edit-photo-item', params: { id: photoItem.id }}" class="btn btn-primary">Edit
                         </router-link>
                         <button v-if="photoItem.user_id == $auth.user().id" class="btn btn-danger" @click="deletePhotoItem(photoItem.id)">Delete</button>
-                        <button class="btn btn-secondary">Like</button>
                     </div>
+                    <div class="clearfix"></div>
+                    <div class="btn-group" role="group">
+                        <like :item_id="photoItem.id" :item_type="'photoItem'" :user_id="$auth.user().id"></like>
+                    </div>                    
                 </td>
             </tr>
             </tbody>
@@ -60,7 +63,10 @@
                         <router-link v-if="newsItem.user_id == $auth.user().id" :to="{name: 'edit-news-item', params: { id: newsItem.id }}" class="btn btn-primary">Edit
                         </router-link>
                         <button v-if="newsItem.user_id == $auth.user().id" class="btn btn-danger" @click="deleteNewsItem(newsItem.id)">Delete</button>
-                        <button class="btn btn-secondary">Like</button>   
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="btn-group" role="group">
+                        <like :item_id="newsItem.id" :item_type="'newsItem'" :user_id="$auth.user().id"></like>
                     </div>
                 </td>
             </tr>
@@ -70,7 +76,11 @@
 </template>
 
 <script>
+    import Like from './Like.vue';
     export default {
+        components: {
+            Like,
+        },        
         data() {
             return {
                 photoItems: [],
@@ -105,7 +115,7 @@
                         let i = this.newsItems.map(item => item.id).indexOf(id); // find index of your object
                         this.newsItems.splice(i, 1)
                     });
-            }
+            },       
         }
     }
 </script>
