@@ -5,7 +5,10 @@
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse">
+            <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" type="button" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                &#9776;
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <router-link :to="{ name: 'home' }" class="nav-item nav-link">Home</router-link>
                     <router-link v-if="$auth.check()" :to="{ name: 'add-photo-item' }" class="nav-item nav-link">Add photo</router-link>

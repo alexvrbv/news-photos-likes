@@ -3101,6 +3101,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -3114,6 +3117,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3310,6 +3317,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3370,6 +3379,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -39257,88 +39270,111 @@ var render = function() {
         "nav",
         { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
         [
-          _c("div", { staticClass: "collapse navbar-collapse" }, [
-            _c(
-              "div",
-              { staticClass: "navbar-nav" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "nav-item nav-link",
-                    attrs: { to: { name: "home" } }
-                  },
-                  [_vm._v("Home")]
-                ),
-                _vm._v(" "),
-                _vm.$auth.check()
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-item nav-link",
-                        attrs: { to: { name: "add-photo-item" } }
-                      },
-                      [_vm._v("Add photo")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.$auth.check()
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-item nav-link",
-                        attrs: { to: { name: "add-news-item" } }
-                      },
-                      [_vm._v("Add news item")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.$auth.check()
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-item nav-link",
-                        attrs: { to: { name: "login" } }
-                      },
-                      [_vm._v("Login")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.$auth.check()
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-item nav-link",
-                        attrs: { to: { name: "register" } }
-                      },
-                      [_vm._v("Register")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.$auth.check()
-                  ? _c(
-                      "a",
-                      {
-                        staticClass: "nav-item nav-link",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.$auth.logout()
+          _c(
+            "button",
+            {
+              staticClass: "navbar-toggler navbar-toggler-right",
+              attrs: {
+                "data-toggle": "collapse",
+                type: "button",
+                "data-target": "#navbarSupportedContent",
+                "aria-controls": "navbarSupportedContent",
+                "aria-expanded": "false",
+                "aria-label": "Toggle navigation"
+              }
+            },
+            [_vm._v("\n            ☰\n        ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "navbarSupportedContent" }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "navbar-nav" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-item nav-link",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [_vm._v("Home")]
+                  ),
+                  _vm._v(" "),
+                  _vm.$auth.check()
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-item nav-link",
+                          attrs: { to: { name: "add-photo-item" } }
+                        },
+                        [_vm._v("Add photo")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$auth.check()
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-item nav-link",
+                          attrs: { to: { name: "add-news-item" } }
+                        },
+                        [_vm._v("Add news item")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.$auth.check()
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-item nav-link",
+                          attrs: { to: { name: "login" } }
+                        },
+                        [_vm._v("Login")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.$auth.check()
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-item nav-link",
+                          attrs: { to: { name: "register" } }
+                        },
+                        [_vm._v("Register")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$auth.check()
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "nav-item nav-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.$auth.logout()
+                            }
                           }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "Logout (" + _vm._s(_vm.$auth.user().email) + ")"
-                        )
-                      ]
-                    )
-                  : _vm._e()
-              ],
-              1
-            )
-          ])
+                        },
+                        [
+                          _vm._v(
+                            "Logout (" + _vm._s(_vm.$auth.user().email) + ")"
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ],
+                1
+              )
+            ]
+          )
         ]
       ),
       _vm._v(" "),
@@ -39414,7 +39450,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text" },
+                attrs: { type: "text", required: "" },
                 domProps: { value: _vm.newsItem.name },
                 on: {
                   input: function($event) {
@@ -39422,6 +39458,32 @@ var render = function() {
                       return
                     }
                     _vm.$set(_vm.newsItem, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Description")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newsItem.description,
+                    expression: "newsItem.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { required: "" },
+                domProps: { value: _vm.newsItem.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.newsItem, "description", $event.target.value)
                   }
                 }
               })
@@ -39489,7 +39551,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text" },
+                attrs: { type: "text", required: "" },
                 domProps: { value: _vm.photoItem.name },
                 on: {
                   input: function($event) {
@@ -39507,7 +39569,7 @@ var render = function() {
               _vm._v(" "),
               _c("input", {
                 staticClass: "form-control-file",
-                attrs: { type: "file", name: "image" },
+                attrs: { type: "file", name: "image", required: "" },
                 on: { change: _vm.selectFile }
               })
             ]),
@@ -39665,6 +39727,8 @@ var render = function() {
           _vm._v(" "),
           _c("th", [_vm._v("Name")]),
           _vm._v(" "),
+          _c("th", [_vm._v("Description")]),
+          _vm._v(" "),
           _c("th", [_vm._v("Created by user (id)")]),
           _vm._v(" "),
           _c("th", [_vm._v("Created At")]),
@@ -39682,6 +39746,8 @@ var render = function() {
             _c("td", [_vm._v(_vm._s(newsItem.id))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(newsItem.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(newsItem.description))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(newsItem.user_id))]),
             _vm._v(" "),
@@ -39805,7 +39871,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text" },
+                attrs: { type: "text", required: "" },
                 domProps: { value: _vm.newsItem.name },
                 on: {
                   input: function($event) {
@@ -39813,6 +39879,32 @@ var render = function() {
                       return
                     }
                     _vm.$set(_vm.newsItem, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Description")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newsItem.description,
+                    expression: "newsItem.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { required: "" },
+                domProps: { value: _vm.newsItem.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.newsItem, "description", $event.target.value)
                   }
                 }
               })
@@ -39880,7 +39972,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text" },
+                attrs: { type: "text", required: "" },
                 domProps: { value: _vm.photoItem.name },
                 on: {
                   input: function($event) {

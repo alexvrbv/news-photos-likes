@@ -45,6 +45,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Description</th>
                 <th>Created by user (id)</th>
                 <th>Created At</th>
                 <th>Updated At</th>
@@ -55,6 +56,7 @@
             <tr v-for="newsItem in newsItems" :key="newsItem.id">
                 <td>{{ newsItem.id }}</td>
                 <td>{{ newsItem.name }}</td>
+                <td>{{ newsItem.description }}</td>
                 <td>{{ newsItem.user_id }}</td>
                 <td>{{ newsItem.created_at }}</td>
                 <td>{{ newsItem.updated_at }}</td>

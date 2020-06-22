@@ -40,6 +40,7 @@ class NewsItemController extends Controller
         $user = JWTAuth::parseToken()->authenticate();
         $newsItem = new NewsItem([
             'name' => $request->input('name'),
+            'description' => $request->input('description'),
             'user_id' => $user->id,
         ]);
         $newsItem->save();

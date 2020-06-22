@@ -6,7 +6,7 @@
                 <form @submit.prevent="updatePhotoItem">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" v-model="photoItem.name">
+                        <input type="text" class="form-control" v-model="photoItem.name" required>
                     </div>
                     <div class="form-group">
                         <label>Image</label>

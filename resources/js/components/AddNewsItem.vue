@@ -6,7 +6,11 @@
                 <form @submit.prevent="addNewsItem">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" v-model="newsItem.name">
+                        <input type="text" class="form-control" v-model="newsItem.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" v-model="newsItem.description" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Add News Item</button>
                 </form>

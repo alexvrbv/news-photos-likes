@@ -6,11 +6,11 @@
                 <form @submit.prevent="addPhotoItem">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" v-model="photoItem.name">
+                        <input type="text" class="form-control" v-model="photoItem.name" required>
                     </div>
                     <div class="form-group">
                         <label>Image</label>
-                        <input type="file" name="image" class="form-control-file" @change="selectFile">
+                        <input type="file" name="image" class="form-control-file" @change="selectFile" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Photo</button>
                 </form>
