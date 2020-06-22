@@ -3305,20 +3305,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -39608,212 +39594,214 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", { staticClass: "text-center" }, [_vm._v("All Photos")]),
-    _c("br"),
+    _c("h2", { staticClass: "text-center mb-3" }, [_vm._v("All Photos")]),
     _vm._v(" "),
-    _c("table", { staticClass: "table table-bordered" }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [_vm._v("ID")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Image")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Created by user (id)")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Created At")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Updated At")]),
-          _vm._v(" "),
-          _vm.$auth.user() ? _c("th", [_vm._v("Actions")]) : _vm._e()
-        ])
-      ]),
-      _vm._v(" "),
+    _c("div", { staticClass: "container-fluid" }, [
       _c(
-        "tbody",
+        "div",
+        { staticClass: "row" },
         _vm._l(_vm.photoItems, function(photoItem) {
-          return _c("tr", { key: photoItem.id }, [
-            _c("td", [_vm._v(_vm._s(photoItem.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(photoItem.name))]),
-            _vm._v(" "),
-            _c("td", [
-              _c("img", {
-                staticClass: "img-thumbnail",
-                attrs: { src: "/storage/" + photoItem.image }
-              })
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(photoItem.user_id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(photoItem.created_at))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(photoItem.updated_at))]),
-            _vm._v(" "),
-            _vm.$auth.user()
-              ? _c("td", [
-                  _c(
-                    "div",
-                    { staticClass: "btn-group", attrs: { role: "group" } },
-                    [
-                      photoItem.user_id == _vm.$auth.user().id
-                        ? _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: {
-                                to: {
-                                  name: "edit-photo-item",
-                                  params: { id: photoItem.id }
-                                }
-                              }
-                            },
-                            [_vm._v("Edit\n                    ")]
-                          )
-                        : _vm._e(),
+          return _c(
+            "div",
+            { key: photoItem.id, staticClass: "col-md-12 col-lg-6 col-xl-3" },
+            [
+              _c("div", { staticClass: "card mb-4" }, [
+                _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: { src: "/storage/" + photoItem.image }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h5", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(photoItem.name))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("ul", { staticClass: "list-group list-group-flush" }, [
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("ID: " + _vm._s(photoItem.id))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Created by user (id): " + _vm._s(photoItem.user_id))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Created At: " + _vm._s(photoItem.created_at))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Updated At: " + _vm._s(photoItem.updated_at))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm.$auth.user()
+                  ? _c("div", { staticClass: "card-body" }, [
+                      _c(
+                        "div",
+                        { staticClass: "btn-group", attrs: { role: "group" } },
+                        [
+                          photoItem.user_id == _vm.$auth.user().id
+                            ? _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: {
+                                    to: {
+                                      name: "edit-photo-item",
+                                      params: { id: photoItem.id }
+                                    }
+                                  }
+                                },
+                                [_vm._v("Edit\n                            ")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          photoItem.user_id == _vm.$auth.user().id
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deletePhotoItem(photoItem.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Delete")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      photoItem.user_id == _vm.$auth.user().id
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger",
-                              on: {
-                                click: function($event) {
-                                  return _vm.deletePhotoItem(photoItem.id)
-                                }
-                              }
-                            },
-                            [_vm._v("Delete")]
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "clearfix" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "btn-group", attrs: { role: "group" } },
-                    [
-                      _c("like", {
-                        attrs: {
-                          item_id: photoItem.id,
-                          item_type: "photoItem",
-                          user_id: _vm.$auth.user().id
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e()
-          ])
+                      _c("div", { staticClass: "clearfix" }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "btn-group", attrs: { role: "group" } },
+                        [
+                          _c("like", {
+                            attrs: {
+                              item_id: photoItem.id,
+                              item_type: "photoItem",
+                              user_id: _vm.$auth.user().id
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  : _vm._e()
+              ])
+            ]
+          )
         }),
         0
       )
     ]),
     _vm._v(" "),
-    _c("br"),
+    _c("h3", { staticClass: "text-center mb-3" }, [_vm._v("All News")]),
     _vm._v(" "),
-    _c("h3", { staticClass: "text-center" }, [_vm._v("All News")]),
-    _c("br"),
-    _vm._v(" "),
-    _c("table", { staticClass: "table table-bordered" }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [_vm._v("ID")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Description")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Created by user (id)")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Created At")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Updated At")]),
-          _vm._v(" "),
-          _vm.$auth.user() ? _c("th", [_vm._v("Actions")]) : _vm._e()
-        ])
-      ]),
-      _vm._v(" "),
+    _c("div", { staticClass: "container-fluid" }, [
       _c(
-        "tbody",
+        "div",
+        { staticClass: "row" },
         _vm._l(_vm.newsItems, function(newsItem) {
-          return _c("tr", { key: newsItem.id }, [
-            _c("td", [_vm._v(_vm._s(newsItem.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(newsItem.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(newsItem.description))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(newsItem.user_id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(newsItem.created_at))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(newsItem.updated_at))]),
-            _vm._v(" "),
-            _vm.$auth.user()
-              ? _c("td", [
-                  _c(
-                    "div",
-                    { staticClass: "btn-group", attrs: { role: "group" } },
-                    [
-                      newsItem.user_id == _vm.$auth.user().id
-                        ? _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: {
-                                to: {
-                                  name: "edit-news-item",
-                                  params: { id: newsItem.id }
-                                }
-                              }
-                            },
-                            [_vm._v("Edit\n                    ")]
-                          )
-                        : _vm._e(),
+          return _c(
+            "div",
+            { key: newsItem.id, staticClass: "col-md-12 col-lg-6 col-xl-3" },
+            [
+              _c("div", { staticClass: "card mb-4" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h5", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(newsItem.name))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(newsItem.description))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("ul", { staticClass: "list-group list-group-flush" }, [
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("ID: " + _vm._s(newsItem.id))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Created by user (id): " + _vm._s(newsItem.user_id))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Created At: " + _vm._s(newsItem.created_at))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Updated At: " + _vm._s(newsItem.updated_at))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm.$auth.user()
+                  ? _c("div", { staticClass: "card-body" }, [
+                      _c(
+                        "div",
+                        { staticClass: "btn-group", attrs: { role: "group" } },
+                        [
+                          newsItem.user_id == _vm.$auth.user().id
+                            ? _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: {
+                                    to: {
+                                      name: "edit-news-item",
+                                      params: { id: newsItem.id }
+                                    }
+                                  }
+                                },
+                                [_vm._v("Edit\n                            ")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          newsItem.user_id == _vm.$auth.user().id
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteNewsItem(newsItem.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Delete")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      newsItem.user_id == _vm.$auth.user().id
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger",
-                              on: {
-                                click: function($event) {
-                                  return _vm.deleteNewsItem(newsItem.id)
-                                }
-                              }
-                            },
-                            [_vm._v("Delete")]
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "clearfix" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "btn-group", attrs: { role: "group" } },
-                    [
-                      _c("like", {
-                        attrs: {
-                          item_id: newsItem.id,
-                          item_type: "newsItem",
-                          user_id: _vm.$auth.user().id
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e()
-          ])
+                      _c("div", { staticClass: "clearfix" }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "btn-group", attrs: { role: "group" } },
+                        [
+                          _c("like", {
+                            attrs: {
+                              item_id: newsItem.id,
+                              item_type: "newsItem",
+                              user_id: _vm.$auth.user().id
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  : _vm._e()
+              ])
+            ]
+          )
         }),
         0
       )

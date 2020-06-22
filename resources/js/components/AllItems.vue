@@ -1,79 +1,65 @@
 <template>
     <div>
-        <h3 class="text-center">All Photos</h3><br/>
-
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Created by user (id)</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th v-if="$auth.user()">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="photoItem in photoItems" :key="photoItem.id">
-                <td>{{ photoItem.id }}</td>
-                <td>{{ photoItem.name }}</td>
-                <td><img class="img-thumbnail" :src="'/storage/' + photoItem.image"></td>
-                <td>{{ photoItem.user_id }}</td>
-                <td>{{ photoItem.created_at }}</td>
-                <td>{{ photoItem.updated_at }}</td>
-                <td v-if="$auth.user()">
-                    <div class="btn-group" role="group">
-                        <router-link v-if="photoItem.user_id == $auth.user().id" :to="{name: 'edit-photo-item', params: { id: photoItem.id }}" class="btn btn-primary">Edit
-                        </router-link>
-                        <button v-if="photoItem.user_id == $auth.user().id" class="btn btn-danger" @click="deletePhotoItem(photoItem.id)">Delete</button>
+        <h2 class="text-center mb-3">All Photos</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-xl-3" v-for="photoItem in photoItems" :key="photoItem.id">
+                    <div class="card mb-4">
+                        <img :src="'/storage/' + photoItem.image" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ photoItem.name }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">ID: {{ photoItem.id }}</li>
+                            <li class="list-group-item">Created by user (id): {{ photoItem.user_id }}</li>
+                            <li class="list-group-item">Created At: {{ photoItem.created_at }}</li>
+                            <li class="list-group-item">Updated At: {{ photoItem.updated_at }}</li>
+                        </ul>
+                        <div v-if="$auth.user()" class="card-body">
+                            <div class="btn-group" role="group">
+                                <router-link v-if="photoItem.user_id == $auth.user().id" :to="{name: 'edit-photo-item', params: { id: photoItem.id }}" class="btn btn-primary">Edit
+                                </router-link>
+                                <button v-if="photoItem.user_id == $auth.user().id" class="btn btn-danger" @click="deletePhotoItem(photoItem.id)">Delete</button>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="btn-group" role="group">
+                                <like :item_id="photoItem.id" :item_type="'photoItem'" :user_id="$auth.user().id"></like>
+                            </div>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="btn-group" role="group">
-                        <like :item_id="photoItem.id" :item_type="'photoItem'" :user_id="$auth.user().id"></like>
-                    </div>                    
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <br/>
-
-        <h3 class="text-center">All News</h3><br/>
-
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Created by user (id)</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th v-if="$auth.user()">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="newsItem in newsItems" :key="newsItem.id">
-                <td>{{ newsItem.id }}</td>
-                <td>{{ newsItem.name }}</td>
-                <td>{{ newsItem.description }}</td>
-                <td>{{ newsItem.user_id }}</td>
-                <td>{{ newsItem.created_at }}</td>
-                <td>{{ newsItem.updated_at }}</td>
-                <td v-if="$auth.user()">
-                    <div class="btn-group" role="group">
-                        <router-link v-if="newsItem.user_id == $auth.user().id" :to="{name: 'edit-news-item', params: { id: newsItem.id }}" class="btn btn-primary">Edit
-                        </router-link>
-                        <button v-if="newsItem.user_id == $auth.user().id" class="btn btn-danger" @click="deleteNewsItem(newsItem.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+        <h3 class="text-center mb-3">All News</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-xl-3" v-for="newsItem in newsItems" :key="newsItem.id">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ newsItem.name }}</h5>
+                            <div class="card-text">{{ newsItem.description }}</div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">ID: {{ newsItem.id }}</li>
+                            <li class="list-group-item">Created by user (id): {{ newsItem.user_id }}</li>
+                            <li class="list-group-item">Created At: {{ newsItem.created_at }}</li>
+                            <li class="list-group-item">Updated At: {{ newsItem.updated_at }}</li>
+                        </ul>
+                        <div v-if="$auth.user()" class="card-body">
+                            <div class="btn-group" role="group">
+                                <router-link v-if="newsItem.user_id == $auth.user().id" :to="{name: 'edit-news-item', params: { id: newsItem.id }}" class="btn btn-primary">Edit
+                                </router-link>
+                                <button v-if="newsItem.user_id == $auth.user().id" class="btn btn-danger" @click="deleteNewsItem(newsItem.id)">Delete</button>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="btn-group" role="group">
+                                <like :item_id="newsItem.id" :item_type="'newsItem'" :user_id="$auth.user().id"></like>
+                            </div>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="btn-group" role="group">
-                        <like :item_id="newsItem.id" :item_type="'newsItem'" :user_id="$auth.user().id"></like>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                </div>
+            </div>
+        </div>        
     </div>
 </template>
 
