@@ -5,7 +5,24 @@
             <div class="row">
                 <div class="col-md-12 col-lg-6 col-xl-3" v-for="photoItem in photoItems" :key="photoItem.id">
                     <div class="card mb-4">
-                        <img :src="'/storage/' + photoItem.image" class="card-img-top">
+                        <a href="#" data-toggle="modal" data-target="#photoItemModal">
+                            <img :src="'/storage/' + photoItem.image" class="card-img-top">
+                        </a>
+                        <div class="modal fade" id="photoItemModal" tabindex="-1" role="dialog" aria-labelledby="photoItemModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="photoItemModalLabel">{{ photoItem.name }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>                                    
+                                    <div class="modal-body">
+                                        <img class="mw-100" :src="'/storage/' + photoItem.image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ photoItem.name }}</h5>
                         </div>
