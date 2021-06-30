@@ -70,18 +70,19 @@ class PhotoItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\PhotoItem  $photoItem
+     * @param  \App\PhotoItem  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(PhotoItem $photoItem)
+    public function show($id)
     {
-        //
+        $photoItem = PhotoItem::find($id);
+        return response()->json($photoItem);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\PhotoItem  $photoItem
+     * @param  \App\PhotoItem  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -94,7 +95,7 @@ class PhotoItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PhotoItem  $photoItem
+     * @param  \App\PhotoItem  $id
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request)
@@ -125,7 +126,7 @@ class PhotoItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PhotoItem  $photoItem
+     * @param  \App\PhotoItem  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

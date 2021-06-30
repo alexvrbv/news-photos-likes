@@ -51,18 +51,19 @@ class NewsItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\NewsItem  $newsItem
+     * @param  \App\NewsItem  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(NewsItem $newsItem)
+    public function show($id)
     {
-        //
+        $newsItem = NewsItem::find($id);
+        return response()->json($newsItem);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\NewsItem  $newsItem
+     * @param  \App\NewsItem  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -75,7 +76,7 @@ class NewsItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\NewsItem  $newsItem
+     * @param  \App\NewsItem  $id
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request)
@@ -88,7 +89,7 @@ class NewsItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\NewsItem  $newsItem
+     * @param  \App\NewsItem  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

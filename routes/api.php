@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('photoItems', 'PhotoItemController@index');
 Route::group(['prefix' => 'photoItem'], function () {
     Route::post('store', 'PhotoItemController@store');
+    Route::get('show/{id}', 'PhotoItemController@show');
     Route::get('edit/{id}', 'PhotoItemController@edit');
     Route::post('update/{id}', 'PhotoItemController@update');
     Route::delete('destroy/{id}', 'PhotoItemController@destroy');
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'photoItem'], function () {
 Route::get('newsItems', 'NewsItemController@index');
 Route::group(['prefix' => 'newsItem'], function () {
     Route::post('store', 'NewsItemController@store');
+    Route::get('show/{id}', 'NewsItemController@show');
     Route::get('edit/{id}', 'NewsItemController@edit');
     Route::post('update/{id}', 'NewsItemController@update');
     Route::delete('destroy/{id}', 'NewsItemController@destroy');

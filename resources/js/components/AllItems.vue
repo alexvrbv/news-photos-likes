@@ -5,10 +5,10 @@
             <div class="row">
                 <div class="col-md-12 col-lg-6 col-xl-3" v-for="photoItem in photoItems" :key="photoItem.id">
                     <div class="card mb-4">
-                        <a href="#" data-toggle="modal" data-target="#photoItemModal">
+                        <a href="#" data-toggle="modal" :data-target="'#photoItemModal' + photoItem.id">
                             <img :src="'/storage/' + photoItem.image" class="card-img-top">
                         </a>
-                        <div class="modal fade" id="photoItemModal" tabindex="-1" role="dialog" aria-labelledby="photoItemModalLabel" aria-hidden="true">
+                        <div class="modal fade" :id="'photoItemModal' + photoItem.id" tabindex="-1" role="dialog" aria-labelledby="photoItemModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -24,7 +24,11 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">{{ photoItem.name }}</h5>
+                            <h5 class="card-title">
+                                <router-link :to="{ name: 'show-photo-item', params: { id: photoItem.id } }">
+                                    {{ photoItem.name }}
+                                </router-link>
+                            </h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">ID: {{ photoItem.id }}</li>
@@ -53,7 +57,11 @@
                 <div class="col-md-12 col-lg-6 col-xl-3" v-for="newsItem in newsItems" :key="newsItem.id">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">{{ newsItem.name }}</h5>
+                            <h5 class="card-title">
+                                <router-link :to="{ name: 'show-news-item', params: { id: newsItem.id } }">
+                                    {{ newsItem.name }}
+                                </router-link>
+                            </h5>
                             <div class="card-text">{{ newsItem.description }}</div>
                         </div>
                         <ul class="list-group list-group-flush">
