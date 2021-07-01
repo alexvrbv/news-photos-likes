@@ -3397,7 +3397,7 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('plaintext', {
   bind: function bind(el, binding, vnode) {
     el.innerHTML = el.innerText;
-    el.innerHTML = el.innerHTML.replace(/<[^>]+>/gm, '');
+    el.innerHTML = el.innerHTML.replace(/<[^>]+>/gm, ' ');
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = ({

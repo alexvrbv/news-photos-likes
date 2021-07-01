@@ -95,7 +95,7 @@
     Vue.directive('plaintext', {
         bind(el, binding, vnode) {
             el.innerHTML = el.innerText;
-            el.innerHTML = el.innerHTML.replace(/<[^>]+>/gm, '');
+            el.innerHTML = el.innerHTML.replace(/<[^>]+>/gm, ' ');
         }
     });
 
