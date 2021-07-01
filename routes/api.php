@@ -36,6 +36,8 @@ Route::group(['prefix' => 'newsItem'], function () {
     Route::delete('destroy/{id}', 'NewsItemController@destroy');
 });
 
+Route::post('editor-image-store', 'NewsItemController@editorImageStore');
+
 Route::get('likes', 'LikeController@index');
 Route::group(['prefix' => 'like'], function () {
     Route::post('store', 'LikeController@store');

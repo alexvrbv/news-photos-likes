@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\NewsItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use JWTAuth;
+use File;
+use Debugbar;
 
 class NewsItemController extends Controller
 {
@@ -97,5 +100,26 @@ class NewsItemController extends Controller
         $newsItem = NewsItem::find($id);
         $newsItem->delete();
         return response()->json('The news item successfully deleted');
+    }
+
+    
+    /**
+     * Store an image from Vue2Editor.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function editorImageStore(Request $request)
+    {
+        $fileName = '';
+        $image = $request->file('image');
+        if ($image) {
+            $extension = $image->getClientOriginalExtension();
+            $fileName = Str::random().'.'.$extension;
+            $filePath = public_path().'/storage';
+            $image->move($filePath,$fileName);
+        }
+
+        return $fileName;
     }
 }

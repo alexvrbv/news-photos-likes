@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <div class="card-text">{{ newsItem.description }}</div>
+                        <div v-html="newsItem.description" class="card-text"></div>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: {{ newsItem.id }}</li>

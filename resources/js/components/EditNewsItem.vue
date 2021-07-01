@@ -2,7 +2,7 @@
     <div>
         <h3 class="text-center">Edit News Item</h3>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <form @submit.prevent="updateNewsItem">
                     <div class="form-group">
                         <label>Name</label>
@@ -10,7 +10,7 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea class="form-control" v-model="newsItem.description" required></textarea>
+                        <vue-editor id="editor" useCustomImageHandler @image-added="handleImageAdded" v-model="newsItem.description" required />
                     </div>
                     <button type="submit" class="btn btn-primary">Update News item</button>
                 </form>
@@ -20,7 +20,11 @@
 </template>
 
 <script>
+    import { VueEditor } from "vue2-editor";
     export default {
+        components: {
+            VueEditor,
+        }, 
         data() {
             return {
                 newsItem: {}
@@ -40,6 +44,15 @@
                     .post(`/newsItem/update/${this.$route.params.id}`, this.newsItem)
                     .then((response) => {
                         this.$router.push({name: 'home'});
+                    });
+            },
+            handleImageAdded: function(file, Editor, cursorLocation, resetUploader) {
+                let formdata = new FormData();
+                formdata.append("image", file);
+                axios.post('/editor-image-store', formdata)
+                    .then(response => {
+                        Editor.insertEmbed(cursorLocation, "image", "/storage/"+response.data);
+                        resetUploader();
                     });
             }
         }

@@ -62,7 +62,7 @@
                                     {{ newsItem.name }}
                                 </router-link>
                             </h5>
-                            <div class="card-text">{{ newsItem.description }}</div>
+                            <div v-plaintext class="card-text">{{ newsItem.description }}</div>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">ID: {{ newsItem.id }}</li>
@@ -89,7 +89,16 @@
 </template>
 
 <script>
+    import Vue from 'vue';
     import Like from './Like.vue';
+
+    Vue.directive('plaintext', {
+        bind(el, binding, vnode) {
+            el.innerHTML = el.innerText;
+            el.innerHTML = el.innerHTML.replace(/<[^>]+>/gm, '');
+        }
+    });
+
     export default {
         components: {
             Like,
